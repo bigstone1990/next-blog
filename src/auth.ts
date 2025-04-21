@@ -30,4 +30,15 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = (token.id || token.sub || '') as string; // Add user ID to session
+        session.user.name = token.name ?? '';
+        session.user.email = token.email ?? ''; // Add email to session
+      }
+      return session; // Return the session object
+    }
+  },
+
 });

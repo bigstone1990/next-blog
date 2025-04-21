@@ -10,7 +10,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useActionState } from 'react';
 import { createUser } from '@/lib/actions/createUser';
-import { Car } from "lucide-react";
 
 export default function RegisterForm() {
   const [state, formAction] = useActionState(createUser, {
